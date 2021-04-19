@@ -39,7 +39,7 @@
 
 }
 
-#title1 {
+.title1 {
     color: black;
     text-align: center;
     font-size: 1rem;
@@ -62,7 +62,7 @@
     font-weight: bolder;
     display: flex;
     width: 50%;
-
+    justify-content: center;
 }
 
 .buttonsWrapper {
@@ -75,5 +75,25 @@
 
 #resultPar {
     margin-top: 15px;
+    padding: 35px;
 }
 
+.methodsWrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 65%;
+    margin: 25px;
+    padding: 35px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.methodsList li {
+    margin: 5px;
+}
+a {
+    color:#0dcaf0 !important;
+    text-decoration: none !important;
+
+}

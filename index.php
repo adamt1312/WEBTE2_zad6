@@ -130,40 +130,40 @@ $conn = $DB->getConnection();
 <body>
     <div id="container">
         <div id="titleWrapper">
-            <h1>WEBTE6 - API</h1>
+            <h1>WEBTE2 - API</h1>
         </div>
-
 
         <div class="contentWrapper">
             <div class="exampleWrapper">
                 <div class="descriptionWrapper" style="padding-right: 20px">
-                    <p id="title1">Which names have nameday at a given day?</p>
+                    <p class="title1" id="title1">Which names have name day at a given date?</p>
                 </div>
                 <div class="formWrapper">
-                    <form action="/action_page.php" style="border-left: 2px solid black;">
-                        <div class="form-group">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Choose country</option>
-                                <option value="SK">SK</option>
-                                <option value="CZ">CZ</option>
-                                <option value="HU">HU</option>
-                                <option value="AT">AT</option>
-                                <option value="PL">PL</option>
-                            </select>
-                        </div>
-
+                    <form action="./GET/namedays" style="border-left: 2px solid black;" id="form1">
                         <div class="form-group">
                             <label for="day">Day</label>
-                            <input type="number" class="form-control" id="day" name="day" min="1" max="31">
+                            <input type="number" class="form-control" id="day1" name="day" min="1" max="31" required>
                         </div>
 
                         <div class="form-group">
                             <label for="month">Month</label>
-                            <input type="number" class="form-control" id="month" name="month" min="1" max="12">
+                            <input type="number" class="form-control" id="month1" name="month" min="1" max="12" required>
                         </div>
 
                         <div class="form-group">
-                            <button type="button" class="btn btn-info">Send request</button>
+                            <label for="month">Country</label>
+                            <select class="form-select" aria-label="Default select example" name="country" required>
+                                <option selected>Choose country</option>
+                                <option value="sk">SK</option>
+                                <option value="cz">CZ</option>
+                                <option value="hu">HU</option>
+                                <option value="at">AT</option>
+                                <option value="pl">PL</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info">Send request</button>
                         </div>
                     </form>
                 </div>
@@ -171,62 +171,63 @@ $conn = $DB->getConnection();
 
             <div class="exampleWrapper">
                 <div class="formWrapper">
-                    <form action="/action_page.php" style="border-right: 2px solid black;">
+                    <form method="get" action="./GET/namedays" style="border-right: 2px solid black;" id="form2">
                         <div class="form-group">
-                            <select class="form-select" aria-label="Default select example">
+                            <label for="day">Name</label>
+                            <input type="text" class="form-control" id="name2" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="month">Country</label>
+                            <select class="form-select" aria-label="Default select example" name="country" required>
                                 <option selected>Choose country</option>
-                                <option value="SK">SK</option>
-                                <option value="CZ">CZ</option>
-                                <option value="HU">HU</option>
-                                <option value="AT">AT</option>
-                                <option value="PL">PL</option>
+                                <option value="sk">SK</option>
+                                <option value="cz">CZ</option>
+                                <option value="hu">HU</option>
+                                <option value="at">AT</option>
+                                <option value="pl">PL</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="day">Name</label>
-                            <input type="text" class="form-control" id="day" name="name">
-                        </div>
-
-                        <div class="form-group">
-                            <button type="button" class="btn btn-info">Send request</button>
+                            <button type="submit" class="btn btn-info">Send request</button>
                         </div>
                     </form>
                 </div>
                 <div class="descriptionWrapper" style="padding-left: 20px">
-                    <p id="title1">On which day does the given name have a name day?</p>
+                    <p class="title1" id="title2">On which day does the given name have a name day?</p>
                 </div>
             </div>
 
             <div class="exampleWrapper">
                 <div class="descriptionWrapper" style="padding-right: 20px">
-                    <p id="title1">Add new name day with a given name and day.</p>
+                    <p class="title1" id="title3">Add new name day with a given name and day.</p>
                 </div>
                 <div class="formWrapper">
-                    <form action="/action_page.php" style="border-left: 2px solid black;">
+                    <form method="post" action="./POST/" style="border-left: 2px solid black;" id="form3">
                         <div class="form-group">
                             <label for="day">Name</label>
-                            <input type="text" class="form-control" id="day" name="name">
+                            <input type="text" class="form-control" id="name3" name="name" required>
                         </div>
 
                         <div class="form-group">
                             <label for="day">Day</label>
-                            <input type="number" class="form-control" id="day" name="day" min="1" max="31">
+                            <input type="number" class="form-control" id="day3" name="day" min="1" max="31" required>
                         </div>
 
                         <div class="form-group">
                             <label for="month">Month</label>
-                            <input type="number" class="form-control" id="month" name="month" min="1" max="12">
+                            <input type="number" class="form-control" id="month3" name="month" min="1" max="12" required>
                         </div>
 
                         <div class="form-group">
-                            <button type="button" class="btn btn-info">Add new</button>
+                            <button type="submit" class="btn btn-info">Add new</button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="exampleWrapper" style="flex-direction: column; width: 780px;">
+            <div class="exampleWrapper" style="flex-direction: column; width: 900px;">
                 <p id="title1">You can fetch other info too...</p>
                 <div class="buttonsWrapper">
                     <button type="button" class="btn btn-info" id="allSkBtn">Get all holidays in SK</button>
@@ -234,7 +235,12 @@ $conn = $DB->getConnection();
                     <button type="button" class="btn btn-info" id="allSkBtn2">Get all memorial days in SK</button>
                 </div>
 
-                <p id="resultPar"></p>
+                <p id="resultPar">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="mySwitch">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Raw view of data</label>
+                </div>
+                </p>
 
             </div>
         </div>
@@ -244,9 +250,37 @@ $conn = $DB->getConnection();
         <div class="contentWrapper">
             <hr style="height: 2px; color: black; width: 90%">
             <h1>API Documentation</h1>
-            <p>Lorem sadasfj jkdjakljl</p>
-            <p>Lorem sadasfj jkdjakljl</p>
-            <p>Lorem sadasfj jkdjakljl</p>
+            <div class="methodsWrapper">
+                <h2 style="text-align: center">GET Methods</h2>
+
+                <p>
+                    <ol class="methodsList">
+                    <h3>Holidays and memorial days</h3>
+                    <p>Can be used to get a list of all items such as holidays and memorial days in a specific country. Easy usage, for holidays use a <u><b>/GET/holidays</b></u> with a <u><b>lang</b></u> parameter.
+                    <br><u><b>/GET/memorial</b></u> list all memorial days in SK without any parameter.</p>
+                        <li>Get all holidays in CZ - <a href="./GET/holidays?lang=cz"><b>/GET/holidays?lang=cz</b></a></li>
+                        <li>Get all holidays in SK - <a href="./GET/holidays?lang=sk"><b>/GET/holidays?lang=sk</b></a></li>
+                        <li>Get all memorial days in SK - <a href="./GET/memorial"><b>/GET/memorial</b></a></li>
+                    <br>
+                    <h3>Name days</h3>
+                    <p>You can query for a specific information such as all name days at a specific date in a specific country with <u><b>/GET/namedays</b></u> with a <u><b>day, month and country</b></u> parameters.
+                        <br>If you want to find out when a specific name has a name day, you can use <u><b>/GET/namedays</b></u>  with a <u><b>name and country</b></u> parameters.</p>
+                        <li>Get all name days from a given date and country - <a href="./GET/namedays?day=<<day>>&month=<<month>>&country=<<country>>"><b>/GET/namedays?day=<&lt;day&gt;>&month=<&lt;month&gt;>&country=<&lt;country&gt;></b></a></li>
+                        <li>Get name day date from a given name and country - <a href="./GET/namedays?name=<<name>>&country=<<country>>"><b>/GET/namedays?name=<&lt;name&gt;>&country=<&lt;country&gt;></b></a></li>
+                    </ol>
+                </p>
+
+
+                <h2 style="text-align: center">Post Method</h2>
+
+                <p>
+                <ol class="methodsList">
+                    <h3>Create a new name day</h3>
+                    <p>You can create a new name day (just in SK) with a simple <u><b>/POST/</b></u> with a <u><b>name,day and month</b></u> parameters.
+                    <li>Create new name day in SK - <a href="./POST/?name=<<name>>&day=<<day>>&month=<<month>>"><b>/POST/?name=<&lt;name>>&day=<&lt;day>>&month=<&lt;month>></b></a></li>
+                </ol>
+                </p>
+            </div>
         </div>
 
         <footer>Adam Trebichalský, 98014</footer>

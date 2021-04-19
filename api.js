@@ -1,8 +1,8 @@
-$("#formToSend").submit(function(e) {
+$("#form1").submit(function (e) {
 
     e.preventDefault();
-    var form = $(this);
-    var url = form.attr('action');
+    let form = $(this);
+    let url = form.attr('action');
 
     $.ajax({
         type: "GET",
@@ -10,27 +10,28 @@ $("#formToSend").submit(function(e) {
         data: form.serialize(),
         success: function(data)
         {
-            var output = JSON.parse(data);
-            var size = Object.keys(output).length;
+            let output = data;
+            let size = Object.keys(output).length;
+            console.log(output);
 
-            if(output.msg){
-                document.getElementById("output").innerText = output.msg;
+            if(output.msg) {
+                document.getElementById("title1").innerText = output.msg;
             }
-            else{
-                document.getElementById("output").innerText = "";
-                for(let i=0;i<size;i++){
-                    document.getElementById("output").innerText += output[i].value + "\n";
+            else {
+                document.getElementById("title1").innerText = "";
+                for(let i=0;i<size;i++) {
+                    document.getElementById("title1").innerText += output[i].value + "\n";
                 }
             }
         }
     });
 });
 
-$("#formToSend2").submit(function(e) {
+$("#form2").submit(function (e) {
 
     e.preventDefault();
-    var form = $(this);
-    var url = form.attr('action');
+    let form = $(this);
+    let url = form.attr('action');
 
     $.ajax({
         type: "GET",
@@ -38,28 +39,28 @@ $("#formToSend2").submit(function(e) {
         data: form.serialize(),
         success: function(data)
         {
-            var output = JSON.parse(data);
-            var size = Object.keys(output).length;
+            let output = data;
+            let size = Object.keys(output).length;
 
             if(output.msg){
 
-                document.getElementById("output").innerText = output.msg;
+                document.getElementById("title2").innerText = output.msg;
             }
             else{
-                document.getElementById("output").innerText = "";
+                document.getElementById("title2").innerText = "";
                 for(let i=0;i<size;i++){
-                    document.getElementById("output").innerText +="Day: " + output[i].day + " Month: " + output[i].month + "\n";
+                    document.getElementById("title2").innerText +=output[i].day + "." + output[i].month + "\n";
                 }
             }
         }
     });
 });
 
-$("#formToSend3").submit(function(e) {
+$("#form3").submit(function(e) {
 
     e.preventDefault();
-    var form = $(this);
-    var url = form.attr('action');
+    let form = $(this);
+    let url = form.attr('action');
 
     $.ajax({
         type: "POST",
@@ -67,69 +68,80 @@ $("#formToSend3").submit(function(e) {
         data: form.serialize(),
         success: function(data)
         {
-            var output = JSON.parse(data);
-            document.getElementById("output").innerText = output.msg;
-            //console.log(data);
+            let output = data;
+            document.getElementById("title3").innerText = output.msg;
         }
     });
 });
 
-function getSKall(){
-    var url = "api.php/nameday"
+let json_obj = null;
+let swtch = document.getElementById("mySwitch");
+swtch.addEventListener('change', function() {
+    if (this.checked) {
+        insertDataIntoPar(json_obj,Object.keys(json_obj).length)
+    } else {
+        insertDataIntoPar(json_obj,Object.keys(json_obj).length)
+    }
+});
+
+const insertDataIntoPar = (output,size) => {
+    document.getElementById("resultPar").innerText = "";
+    if (swtch.checked) {
+        output.forEach((obj) => {
+            document.getElementById("resultPar").innerText += JSON.stringify(obj) + "\n";
+        });
+    }
+    else {
+        for(let i=0; i<size; i++) {
+            document.getElementById("resultPar").innerText += output[i].day + "." + output[i].month + " - " + output[i].value + "\n";
+        }
+    }
+
+}
+
+const getSKall = () => {
+    var url = "GET/holidays"
     $.ajax({
         type: "GET",
         url: url,
-        data: {"type":"SKholi"},
+        data: {"lang":"sk"},
         success: function(data)
         {
-            var output = JSON.parse(data);
-            var size = Object.keys(output).length;
-            //console.log(size);
-            document.getElementById("resultPar").innerText ="";
-            for(let i=0;i<size;i++){
-                document.getElementById("resultPar").innerText += output[i].value + " Day: " + output[i].day + " Month: " + output[i].month + "\n";
-            }
+            let output = data;
+            json_obj = data;
+            let size = Object.keys(output).length;
+            insertDataIntoPar(output,size);
         }
     });
 }
 
-function getCZall(){
-    var url = "api.php/nameday"
+const getCZall = () => {
+    var url = "GET/holidays"
     $.ajax({
         type: "GET",
         url: url,
-        data: {"type":"CZholi"},
+        data: {"lang":"cz"},
         success: function(data)
         {
-
-            var output = JSON.parse(data);
-            var size = Object.keys(output).length;
-            //console.log(size);
-            document.getElementById("resultPar").innerText ="";
-            for(let i=0;i<size;i++){
-                document.getElementById("resultPar").innerText += output[i].value + " Day: " + output[i].day + " Month: " + output[i].month + "\n";
-            }
-            //console.log(data); // show response from the php script.
+            let output = data;
+            json_obj = data;
+            let size = Object.keys(output).length;
+            insertDataIntoPar(output,size);
         }
     });
 }
 
-function getSKdni(){
-    var url = "api.php/nameday"
+const getSKdni = () => {
+    var url = "GET/memorial"
     $.ajax({
         type: "GET",
         url: url,
-        data: {"type":"SKmem"},
         success: function(data)
         {
-            var output = JSON.parse(data);
-            var size = Object.keys(output).length;
-            //console.log(size);
-            document.getElementById("resultPar").innerText ="";
-            for(let i=0;i<size;i++){
-                document.getElementById("resultPar").innerText += output[i].value + " Day: " + output[i].day + " Month: " + output[i].month + "\n";
-            }
-            //console.log(data); // show response from the php script.
+            let output = data;
+            json_obj = data;
+            let size = Object.keys(output).length;
+            insertDataIntoPar(output,size);
         }
     });
 }
