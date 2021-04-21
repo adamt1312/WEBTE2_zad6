@@ -10,6 +10,43 @@ require_once '../Database.php';
 
 $conn = (new Database())->getConnection();
 if (isset($_REQUEST['name']) && isset($_REQUEST['day']) && isset($_REQUEST['month'])) {
+    switch ($_REQUEST['month']) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            if ($_REQUEST['day'] < 1 || $_REQUEST['day'] > 31) {
+                $result = ["msg" => "Day must be between 1 - 31"];
+                echo json_encode($result);
+                return;
+            }
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if ($_REQUEST['day'] < 1 || $_REQUEST['day'] > 30) {
+                $result = ["msg" => "Day must be between 1 - 30"];
+                echo json_encode($result);
+                return;
+            }
+            break;
+        case 2:
+            if ($_REQUEST['day']  < 1 || $_REQUEST['day']  > 29) {
+                $result = ["msg" => "Day must be between 1 - 29"];
+                echo json_encode($result);
+                return;
+            }
+            break;
+        default:
+            $result = ["msg" => "Month must be between 1 - 12"];
+            echo json_encode($result);
+            return;
+    }
+
     $name = $_REQUEST['name'];
     $day = $_REQUEST['day'];
     $month = $_REQUEST['month'];

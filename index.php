@@ -246,18 +246,16 @@ $conn = $DB->getConnection();
         </div>
 
 
-
         <div class="contentWrapper">
             <hr style="height: 2px; color: black; width: 90%">
             <h1>API Documentation</h1>
             <div class="methodsWrapper">
                 <h2 style="text-align: center">GET Methods</h2>
-
                 <p>
                     <ol class="methodsList">
-                    <h3>Holidays and memorial days</h3>
-                    <p>Can be used to get a list of all items such as holidays and memorial days in a specific country. Easy usage, for holidays use a <u><b>/GET/holidays</b></u> with a <u><b>lang</b></u> parameter.
-                    <br><u><b>/GET/memorial</b></u> list all memorial days in SK without any parameter.</p>
+                        <h3>Holidays and memorial days</h3>
+                        <p>Can be used to get a list of all items such as holidays and memorial days in a specific country. Easy usage, for holidays use a <u><b>/GET/holidays</b></u> with a <u><b>lang</b></u> parameter.
+                        <br><u><b>/GET/memorial</b></u> list all memorial days in SK without any parameter.</p>
                         <li>Get all holidays in CZ - <a href="./GET/holidays?lang=cz"><b>/GET/holidays?lang=cz</b></a></li>
                         <li>Get all holidays in SK - <a href="./GET/holidays?lang=sk"><b>/GET/holidays?lang=sk</b></a></li>
                         <li>Get all memorial days in SK - <a href="./GET/memorial"><b>/GET/memorial</b></a></li>
@@ -270,21 +268,19 @@ $conn = $DB->getConnection();
                     </ol>
                 </p>
 
-
                 <h2 style="text-align: center">Post Method</h2>
-
                 <p>
-                <ol class="methodsList">
-                    <h3>Create a new name day</h3>
-                    <p>You can create a new name day (just in SK) with a simple <u><b>/POST/</b></u> with a <u><b>name,day and month</b></u> parameters.
-                    <li>Create new name day in SK - <a href="./POST/?name=<<name>>&day=<<day>>&month=<<month>>"><b>/POST/?name=<&lt;name>>&day=<&lt;day>>&month=<&lt;month>></b></a></li>
-                </ol>
+                    <ol class="methodsList">
+                        <h3>Create a new name day</h3>
+                        <p>You can create a new name day (just in SK) with a simple <u><b>/POST/</b></u> with a <u><b>name,day and month</b></u> parameters.
+                        <li>Create new name day in SK - <a href="./POST/?name=<<name>>&day=<<day>>&month=<<month>>"><b>/POST/?name=<&lt;name>>&day=<&lt;day>>&month=<&lt;month>></b></a></li>
+                    </ol>
                 </p>
             </div>
         </div>
 
         <footer>Adam Trebichalský, 98014</footer>
     </div>
-<script src="api.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

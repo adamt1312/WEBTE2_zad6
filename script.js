@@ -77,14 +77,10 @@ $("#form3").submit(function(e) {
 let json_obj = null;
 let swtch = document.getElementById("mySwitch");
 swtch.addEventListener('change', function() {
-    if (this.checked) {
-        insertDataIntoPar(json_obj,Object.keys(json_obj).length)
-    } else {
-        insertDataIntoPar(json_obj,Object.keys(json_obj).length)
-    }
+     insertDataIntoHTML(json_obj,Object.keys(json_obj).length);
 });
 
-const insertDataIntoPar = (output,size) => {
+const insertDataIntoHTML = (output,size) => {
     document.getElementById("resultPar").innerText = "";
     if (swtch.checked) {
         output.forEach((obj) => {
@@ -99,7 +95,7 @@ const insertDataIntoPar = (output,size) => {
 
 }
 
-const getSKall = () => {
+const getAllSkHolidays = () => {
     var url = "GET/holidays"
     $.ajax({
         type: "GET",
@@ -110,12 +106,12 @@ const getSKall = () => {
             let output = data;
             json_obj = data;
             let size = Object.keys(output).length;
-            insertDataIntoPar(output,size);
+            insertDataIntoHTML(output,size);
         }
     });
 }
 
-const getCZall = () => {
+const getAllCzHolidays = () => {
     var url = "GET/holidays"
     $.ajax({
         type: "GET",
@@ -126,12 +122,12 @@ const getCZall = () => {
             let output = data;
             json_obj = data;
             let size = Object.keys(output).length;
-            insertDataIntoPar(output,size);
+            insertDataIntoHTML(output,size);
         }
     });
 }
 
-const getSKdni = () => {
+const getAllSkMemorial = () => {
     var url = "GET/memorial"
     $.ajax({
         type: "GET",
@@ -141,7 +137,7 @@ const getSKdni = () => {
             let output = data;
             json_obj = data;
             let size = Object.keys(output).length;
-            insertDataIntoPar(output,size);
+            insertDataIntoHTML(output,size);
         }
     });
 }
@@ -150,11 +146,11 @@ let btn1 = document.getElementById("allSkBtn");
 let btn2 = document.getElementById("allCzBtn");
 let btn3 = document.getElementById("allSkBtn2");
 btn1.addEventListener('click',(() => {
-    getSKall();
+    getAllSkHolidays();
 }))
 btn2.addEventListener('click',(() => {
-    getCZall();
+    getAllCzHolidays();
 }))
 btn3.addEventListener('click',(() => {
-    getSKdni();
+    getAllSkMemorial();
 }))
